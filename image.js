@@ -12,19 +12,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  chrome.storage.local.get('word', function(res) {
-    if (res.word) {
-      document.getElementById('word').value = res.word;
-    }
-  });
+  // chrome.storage.local.get('word', function(res) {
+  //   if (res.word) {
+  //     document.getElementById('word').value = res.word;
+  //   }
+  // });
 
-  document.querySelector('#word').addEventListener('change', function (evt) {
-    chrome.storage.local.set({'word': evt.target.value}, function(){
-      if (chrome.runtime.lastError) {
-        alert('Word is too long. Please choose a smaller word.');
-      }
-    });
-  });
+  // document.querySelector('#word').addEventListener('change', function (evt) {
+  //   chrome.storage.local.set({'word': evt.target.value}, function(){
+  //     if (chrome.runtime.lastError) {
+  //       alert('Word is too long. Please choose a smaller word.');
+  //     }
+  //   });
+  // });
 
   document.querySelector('.pogchampion').addEventListener('change', function (evt) {
     const preview = document.querySelector('img');
