@@ -11,6 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
       init_preview.src = imgURL;
     }
   });
+  chrome.storage.local.get('toggle', function (res) {
+    if (res.toggle) {
+      let val = res.toggle === "true" ? true : false;
+      document.getElementById('pogchampToggle').checked = val;
+    }
+    else {
+      document.getElementById('pogchampToggle').checked = true;
+      chrome.storage.local.set({'toggle': "true"});
+    }
+  });
 
   // chrome.storage.local.get('word', function(res) {
   //   if (res.word) {
@@ -25,6 +35,16 @@ document.addEventListener('DOMContentLoaded', function() {
   //     }
   //   });
   // });
+
+  document.querySelector('#pogchampToggle').addEventListener('change', function (evt) {
+    let val = document.getElementById('pogchampToggle').checked ? "true" : "false";
+    // alert(document.getElementById('pogchampToggle').checked);
+    // alert(val);
+    chrome.storage.local.set({'toggle': val}, function(){
+      // alert('set to ', val);
+      // alert(val);
+    });
+  });
 
   document.querySelector('.pogchampion').addEventListener('change', function (evt) {
     const preview = document.querySelector('img');
